@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkbox</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <table class="table table-striped">
+            <thead><tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Select</th>
+            </tr></thead>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category }}</td>
+                <td>{{ product.price }}</td>
+                <td><input id="delete-product" name="product_id[]" value="{{ product.id }}" type="checkbox"></td>
+            </tr>
+        {% endfor %}
+        </table>
+        <button class="btn btn-danger" id="delete-btn">Delete</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#delete-btn').click(function(){
+                if(confirm("Are you sure you want to delete?")){
+                    var id = []
+                    $(':checkbox:checked').each(function(i){
+                        id[i] = $(this).val()
+                    })
+
+                    if(id.length === 0){
+                        alert("Please select item to delete")
+                    } else {
+                        console.log(id)
+                    }
+                }
+            })
+        })
+    </script>
+
+</body>
+</html>
