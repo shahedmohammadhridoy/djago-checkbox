@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
         <form method="post">
             {% csrf_token %}
             <table class="table table-striped">
@@ -28,7 +28,7 @@
                         <td>{{ product.name }}</td>
                         <td>{{ product.category }}</td>
                         <td>{{ product.price }}</td>
-                        <td><input id="delete-product" name="product_id[]" value="{{ product.id }}" type="checkbox"></td>
+                        <td><input id="delete-product" name="product_id" value="{{ product.id }}" type="checkbox"></td>
                     </tr>
                     {% endfor %}
                 </tbody>
